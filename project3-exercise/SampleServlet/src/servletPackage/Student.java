@@ -32,6 +32,17 @@ public class Student {
 		student1.setId(2);
 		student1.setName("Ardi Pratama");
 		listStudent.add(student1);
+		
+		Student student2 = new Student();
+		student2.setId(3);
+		student2.setName("Bintoro Adi Guna");
+		listStudent.add(student2);
+		
+		Student student3 = new Student();
+		student3.setId(3);
+		student3.setName("Bintoro Adi Guna");
+		listStudent.add(student3);
+		
 		return listStudent;
 	}
 	
