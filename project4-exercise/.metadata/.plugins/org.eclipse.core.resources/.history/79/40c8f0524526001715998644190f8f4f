@@ -16,14 +16,16 @@
 	<input type="submit" value="add">
 </form>
 
-<%List<Student> listStudent = (List) session.getAttribute("listStudent");%>
+<%List<Student> listStudent = (List) session.getAttribute("listStudent");
+int i=0;%>
 <%if(listStudent==null || listStudent.size()==0){
 	out.println();
 }else{
 	for(Student student: listStudent){
+		i++;
 		out.println(student.getId() + " " + student.getName());
 		out.println("<br>");
-		out.println("<a href='/SampleServlet/Servlet?id="+student.getId()+"'><button>remove</button></a><br>");
+		out.println("<a href='/SampleServlet/Servlet?id="+student.getId()+"'><button name=btn"+i+">remove</button></a><br>");
 		out.println("<br>");
 	}
 } %>

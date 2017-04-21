@@ -21,6 +21,7 @@
 	out.println();
 }else{
 	for(Student student: listStudent){
+		i++;
 		out.println(student.getId() + " " + student.getName());
 		out.println("<br>");
 		out.println("<a href='/SampleServlet/Servlet?id="+student.getId()+"'><button>remove</button></a><br>");
