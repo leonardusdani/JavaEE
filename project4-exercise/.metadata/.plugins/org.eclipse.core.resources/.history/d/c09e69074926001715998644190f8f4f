@@ -45,7 +45,7 @@ public class Servlet extends HttpServlet implements javax.servlet.Servlet {
 		if(listStudent==null || listStudent.size()==0){
 			student.setId(listStudent.size()+1);
 		}else{
-			student.setId(listStudent.get(listStudent.size()-1).getId()+1);
+			student.setId(listStudent.get(listStudent.size()).getId()+1);
 		}
 		student.setName(request.getParameter("namestudent"));
 		listStudent.add(student);
