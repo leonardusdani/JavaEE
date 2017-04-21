@@ -1,0 +1,75 @@
+package servletPackage;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
+
+/**
+ * Servlet implementation class Servlet
+ */
+@WebServlet(description = "this is a sample", urlPatterns = { "/Servlet" })
+public class Servlet extends HttpServlet implements javax.servlet.Servlet {
+	private static final long serialVersionUID = 1L;
+	
+	private List<Student> listStudent = Student.getStudent();
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+
+		PrintWriter write = response.getWriter();
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json");
+		
+		JSONObject json = new JSONObject();
+		JSONArray arrayJson = new JSONArray();
+		for (Student student : listStudent)
+		{
+		    JSONObject studentObj = new JSONObject();
+		    studentObj.put("name", student.getName());
+		    studentObj.put("id", student.getId());
+		    arrayJson.add(studentObj);
+		}
+	    json.put("data", arrayJson);
+	    json.put("message", "Hello From Server");
+
+		write.print(json.toString());
+	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		Map<String, String[]> mapStudent = request.getParameterMap();
+
+		PrintWriter write = response.getWriter();
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json");
+		
+		JSONObject json = new JSONObject();
+		JSONArray arrayJson = new JSONArray();
+		for (Student student : listStudent)
+		{
+		    JSONObject studentObj = new JSONObject();
+		    studentObj.put("name", student.getName());
+		    studentObj.put("id", student.getId());
+		    arrayJson.add(studentObj);
+		}
+	    json.put("data", arrayJson);
+	    json.put("message", "Hello From Server");
+
+		write.print(json.toString());
+	}
+
+}
